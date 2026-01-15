@@ -1,11 +1,12 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { ITransaction } from '../../../core/models/i-trasaction';
 import { TransactionService } from '../../../core/services/transaction-service';
 
 
 @Component({
   selector: 'c-transactions-history',
-  imports: [],
+  imports: [DecimalPipe],
   templateUrl: './c-transactions-history.html',
   styleUrl: './c-transactions-history.scss',
 })

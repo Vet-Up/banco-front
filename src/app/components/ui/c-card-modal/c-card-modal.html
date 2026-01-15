@@ -1,7 +1,8 @@
 @if (cardId) {
-<div class="c-card-modal__overlay" (click)="onClose()">
-  <div class="c-card-modal__content" (click)="$event.stopPropagation()">
-    <button class="c-card-modal__close" (click)="onClose()">×</button>
+<div class="c-card-modal">
+  <div class="c-card-modal__overlay" (click)="onClose()">
+    <div class="c-card-modal__content" (click)="$event.stopPropagation()">
+      <button class="c-card-modal__close" (click)="onClose()">×</button>
     
     @if (loading) {
       <div class="c-card-modal__loading">Loading...</div>
@@ -31,25 +32,25 @@
         </div>
 
         <div class="c-card-modal__transactions-section">
-          <h3 class="c-card-modal__transactions-title">Transactions</h3>
+          <h3 class="c-card-modal__transactions-title">Card Transactions</h3>
           
           @if (transactions.length > 0) {
             <div class="c-card-modal__transactions-list">
               @for (transaction of transactions; track transaction.transactionId) {
                 <div class="c-card-modal__transaction-item">
                   @if (transaction.transactionType == 'Credit') {
-                    <i class="bi bi-arrow-right-circle-fill c-card-modal__transaction-icon" style="color: #4B2AAD;"></i>
+                    <i class="bi bi-arrow-right-circle-fill c-card-modal__transaction-icon c-card-modal__transaction-icon--credit"></i>
                   } @else {
-                    <i class="bi bi-arrow-left-circle-fill c-card-modal__transaction-icon"></i>
+                    <i class="bi bi-arrow-left-circle-fill c-card-modal__transaction-icon c-card-modal__transaction-icon--debit"></i>
                   }
                   <div class="c-card-modal__transaction-content">
                     <div class="c-card-modal__transaction-main">
                       <span class="c-card-modal__transaction-description">{{ transaction.description }}</span>
-                      <span class="c-card-modal__transaction-amount">
+                      <span class="c-card-modal__transaction-amount" [class.c-card-modal__transaction-amount--positive]="transaction.transactionType == 'Credit'" [class.c-card-modal__transaction-amount--negative]="transaction.transactionType != 'Credit'">
                         @if (transaction.transactionType == 'Credit') {
-                          +{{ transaction.amount }}€
+                          +{{ transaction.amount | number:'1.2-2' }}€
                         } @else {
-                          -{{ transaction.amount }}€
+                          -{{ transaction.amount | number:'1.2-2' }}€
                         }
                       </span>
                     </div>
@@ -67,6 +68,7 @@
         </div>
       }
     }
+    </div>
   </div>
 </div>
 }

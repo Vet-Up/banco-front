@@ -23,7 +23,7 @@ export class CHeader {
   }
 
   navigateToWelcome() {
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/main']);
   }
 
   toggleDropdown(): void {

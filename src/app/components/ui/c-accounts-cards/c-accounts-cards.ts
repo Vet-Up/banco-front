@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
 import { IAccount } from '../../../core/models/i-account';
 import { AccountService } from '../../../core/services/account-service';
 import { AuthService } from '../../../core/services/auth-service';
@@ -9,7 +10,7 @@ import { CCardModal } from '../c-card-modal/c-card-modal';
 
 @Component({
   selector: 'c-accounts-cards',
-  imports: [CCardModal],
+  imports: [CCardModal, DecimalPipe],
   templateUrl: './c-accounts-cards.html',
   styleUrl: './c-accounts-cards.scss',
 })
@@ -20,6 +21,7 @@ export class CAccountsCards {
   cards: ICard[] = [];
   selectedAccountId: number | null = null;
   selectedCardIdForModal: number | null = null;
+  showBalance: boolean = false;
 
 
   userId = '';
@@ -58,6 +60,19 @@ export class CAccountsCards {
     if (!cardNumber || cardNumber.length < 4) return cardNumber;
     const lastFour = cardNumber.slice(-4);
     return '**** **** **** ' + lastFour;
+  }
+
+  toggleBalance(event: Event) {
+    event.stopPropagation();
+    this.showBalance = !this.showBalance;
+  }
+
+  getCardType(cardNumber: string): 'visa' | 'mastercard' | 'unknown' {
+    if (!cardNumber) return 'unknown';
+    const firstDigit = cardNumber.charAt(0);
+    if (firstDigit === '4') return 'visa';
+    if (firstDigit === '5') return 'mastercard';
+    return 'unknown';
   }
 
 }

@@ -7,6 +7,7 @@
   --c-card-modal-content-max-width: 600px;
   --c-card-modal-content-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   --c-card-modal-font-family: var(--mlt-sys-font-family-primary);
+  --c-card-modal-title-font-family: var(--mlt-sys-font-family-heading);
   --c-card-modal-close-size: 32px;
   --c-card-modal-close-color: var(--mlt-sys-color-gray-500);
   --c-card-modal-close-color-hover: #2d3748;
@@ -70,7 +71,7 @@
 
   &__content {
     background: var(--c-card-modal-content-bg);
-    border-radius: var(--c-card-modal-content-radius);
+    border-radius: 20px;
     padding: var(--c-card-modal-content-padding);
     max-width: var(--c-card-modal-content-max-width);
     width: 90%;
@@ -114,8 +115,22 @@
   &__title {
     font-size: var(--c-card-modal-title-size);
     font-weight: var(--c-card-modal-title-weight);
+    font-family: var(--c-card-modal-title-font-family);
     color: var(--c-card-modal-title-color);
     margin: 0;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4B2AAD, #667eea);
+      border-radius: 2px;
+    }
   }
 
   &__loading {
@@ -127,10 +142,11 @@
 
   &__card-info {
     background: linear-gradient(135deg, var(--c-card-modal-card-info-bg-start) 0%, var(--c-card-modal-card-info-bg-end) 100%);
-    border-radius: var(--c-card-modal-card-info-radius);
+    border-radius: 16px;
     padding: var(--c-card-modal-card-info-padding);
     color: var(--mlt-sys-color-white);
     margin-bottom: var(--c-card-modal-card-info-margin);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
   }
 
   &__card-info-item {
@@ -163,8 +179,22 @@
   &__transactions-title {
     font-size: var(--c-card-modal-transactions-title-size);
     font-weight: var(--c-card-modal-transactions-title-weight);
+    font-family: var(--c-card-modal-title-font-family);
     color: var(--c-card-modal-transactions-title-color);
     margin: 0 0 var(--c-card-modal-transactions-title-margin) 0;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: linear-gradient(90deg, #4B2AAD, #667eea);
+      border-radius: 2px;
+    }
   }
 
   &__transactions-list {
@@ -189,9 +219,13 @@
 
   &__transaction-icon {
     font-size: var(--c-card-modal-transaction-icon-size);
-    color: var(--c-card-modal-transaction-icon-color);
     margin-top: 2px;
     flex-shrink: 0;
+
+    &--credit {
+      color: #4B2AAD;
+    }
+
   }
 
   &__transaction-content {

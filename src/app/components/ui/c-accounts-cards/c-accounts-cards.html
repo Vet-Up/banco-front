@@ -1,19 +1,32 @@
 <div class="c-accounts-cards">
 <div class="c-accounts-cards__accounts-header">
   <h2 class="c-accounts-cards__accounts-title">Your Accounts</h2>
+  <button class="c-accounts-cards__toggle-balance" (click)="toggleBalance($event)">
+    <i class="bi" [class.bi-eye]="showBalance" [class.bi-eye-slash]="!showBalance"></i>
+    <span class="c-accounts-cards__toggle-balance-text">{{ showBalance ? 'Hide' : 'Show' }}</span>
+  </button>
 </div>
 <table class="c-accounts-cards__accounts-table">
   @for (account of accounts; track account.accountId) {
-  <tr class="c-accounts-cards__accounts-row" (click)="onAccountClick(account.accountId)" [class.selected]="selectedAccountId === account.accountId" style="cursor: pointer;">
-    <i class="bi bi-safe2" style="font-size: 3rem;"></i>
-    <div class="c-accounts-cards__accounts-row-text">
-      <td class="c-accounts-cards__accounts c-accounts-cards__accounts--number">
-        <span class="c-accounts-cards__accounts-number">{{ account.iban }}</span>
-      </td>
-      <td class="c-accounts-cards__accounts c-accounts-cards__accounts--balance">
-        <span class="c-accounts-cards__accounts-balance">{{ account.balance }}€</span>
-      </td>
+  <tr class="c-accounts-cards__accounts-row" (click)="onAccountClick(account.accountId)" [class.selected]="selectedAccountId === account.accountId">
+    <div class="c-accounts-cards__accounts-icon">
+      <i class="bi bi-safe2"></i>
     </div>
+    <div class="c-accounts-cards__accounts-row-text">
+      <div class="c-accounts-cards__accounts-row-main">
+        <span class="c-accounts-cards__accounts-label">Account</span>
+        <span class="c-accounts-cards__accounts-iban">{{ account.iban }}</span>
+      </div>
+      <div class="c-accounts-cards__accounts-row-balance">
+        <span class="c-accounts-cards__accounts-balance-label">Balance</span>
+        @if (showBalance) {
+          <span class="c-accounts-cards__accounts-balance">{{ account.balance | number:'1.2-2' }}€</span>
+        } @else {
+          <span class="c-accounts-cards__accounts-balance c-accounts-cards__accounts-balance--hidden">*****€</span>
+        }
+      </div>
+    </div>
+    <i class="bi bi-chevron-right c-accounts-cards__accounts-arrow"></i>
   </tr>
   }
 </table>
@@ -24,6 +37,21 @@
   @if (selectedAccountId) {
     @for (card of cards; track card.creditCardId) {
     <div class="c-accounts-cards__cards-card" (click)="onCardClick(card.creditCardId)" style="cursor: pointer;">
+      <div class="c-accounts-cards__card-top">
+        <div class="c-accounts-cards__card-chip">
+          <i class="bi bi-cpu"></i>
+        </div>
+        <div class="c-accounts-cards__card-brand" [class.c-accounts-cards__card-brand--visa]="getCardType(card.cardNumber) === 'visa'" [class.c-accounts-cards__card-brand--mastercard]="getCardType(card.cardNumber) === 'mastercard'">
+          @if (getCardType(card.cardNumber) === 'visa') {
+            <span class="c-accounts-cards__brand-text">VISA</span>
+          } @else if (getCardType(card.cardNumber) === 'mastercard') {
+            <span class="c-accounts-cards__brand-circles">
+              <span class="c-accounts-cards__brand-circle c-accounts-cards__brand-circle--red"></span>
+              <span class="c-accounts-cards__brand-circle c-accounts-cards__brand-circle--yellow"></span>
+            </span>
+          }
+        </div>
+      </div>
       <div class="c-accounts-cards__card-number">{{ maskCardNumber(card.cardNumber) }}</div>
 
       <div class="c-accounts-cards__card-footer">

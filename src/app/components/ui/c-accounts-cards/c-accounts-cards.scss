@@ -1,31 +1,62 @@
 
 .c-accounts-cards {
+
   --c-accounts-cards-font-family: var(--mlt-sys-font-family-primary);
-  --c-accounts-cards-color: #1a202c;
-  --c-accounts-cards-padding: var(--mlt-sys-spacing-6);
-  --c-accounts-cards-max-width: 1200px;
+  --c-accounts-cards-title-font-family: var(--mlt-sys-font-family-heading);
   --c-accounts-cards-title-size: var(--mlt-sys-font-size-11);
   --c-accounts-cards-title-weight: var(--mlt-sys-font-weight-bold);
+  --c-accounts-cards-font-weight-medium: var(--mlt-sys-font-weight-medium);
+  --c-accounts-cards-font-weight-semibold: var(--mlt-sys-font-weight-semibold);
+  --c-accounts-cards-font-weight-bold: var(--mlt-sys-font-weight-bold);
+  --c-accounts-cards-font-size-sm: var(--mlt-sys-font-size-4);
+  --c-accounts-cards-font-size-md: var(--mlt-sys-font-size-7);
+
+  --c-accounts-cards-color: #1a202c;
   --c-accounts-cards-title-color: #1a202c;
-  --c-accounts-cards-title-margin: var(--mlt-sys-spacing-4);
+  --c-accounts-cards-color-primary: var(--mlt-sys-color-primary);
+  --c-accounts-cards-color-gray-400: var(--mlt-sys-color-gray-400);
+  --c-accounts-cards-color-gray-500: var(--mlt-sys-color-gray-500);
+  --c-accounts-cards-color-gray-600: var(--mlt-sys-color-gray-600);
+  --c-accounts-cards-color-gray-700: var(--mlt-sys-color-gray-700);
   --c-accounts-cards-row-bg: var(--mlt-sys-color-white);
   --c-accounts-cards-row-bg-hover: #f7fafc;
+  --c-accounts-cards-empty-color: var(--mlt-sys-color-gray-500);
+
+  --c-accounts-cards-padding: var(--mlt-sys-spacing-6);
+  --c-accounts-cards-title-margin: var(--mlt-sys-spacing-4);
   --c-accounts-cards-row-padding: var(--mlt-sys-spacing-3) var(--mlt-sys-spacing-4);
-  --c-accounts-cards-row-radius: var(--mlt-sys-radius-lg);
-  --c-accounts-cards-row-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --c-accounts-cards-row-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.15);
-  --c-accounts-cards-row-gap: 10px;
-  --c-accounts-cards-table-margin: 70px;
-  --c-accounts-cards-card-min-height: 140px;
-  --c-accounts-cards-card-radius: 16px;
   --c-accounts-cards-card-padding: var(--mlt-sys-spacing-5);
-  --c-accounts-cards-card-bg-start: #667eea;
-  --c-accounts-cards-card-bg-end: #764ba2;
-  --c-accounts-cards-card-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-  --c-accounts-cards-card-shadow-hover: 0 15px 40px rgba(102, 126, 234, 0.4);
   --c-accounts-cards-cards-gap: var(--mlt-sys-spacing-5);
   --c-accounts-cards-empty-padding: 60px var(--mlt-sys-spacing-5);
-  --c-accounts-cards-empty-color: var(--mlt-sys-color-gray-500);
+  --c-accounts-cards-spacing-4: var(--mlt-sys-spacing-4);
+  --c-accounts-cards-spacing-5: var(--mlt-sys-spacing-5);
+
+  --c-accounts-cards-max-width: 1200px;
+  --c-accounts-cards-row-gap: 10px;
+  --c-accounts-cards-table-margin: 40px;
+
+  --c-accounts-cards-row-radius: var(--mlt-sys-radius-lg);
+  --c-accounts-cards-card-radius: 16px;
+
+  --c-accounts-cards-row-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --c-accounts-cards-row-shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.15);
+  --c-accounts-cards-card-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+  --c-accounts-cards-card-shadow-hover: 0 15px 40px rgba(102, 126, 234, 0.4);
+
+  --c-accounts-cards-card-min-height: 140px;
+  --c-accounts-cards-card-bg-start: #667eea;
+  --c-accounts-cards-card-bg-end: #764ba2;
+
+  --c-accounts-cards-font-size-1: var(--mlt-sys-font-size-1);
+  --c-accounts-cards-font-size-3: var(--mlt-sys-font-size-3);
+  --c-accounts-cards-font-size-5: var(--mlt-sys-font-size-5);
+  --c-accounts-cards-font-size-10: var(--mlt-sys-font-size-10);
+
+  --c-accounts-cards-color-white: var(--mlt-sys-color-white);
+
+  --c-accounts-cards-spacing-3: var(--mlt-sys-spacing-3);
+
+  --c-accounts-cards-radius-md: var(--mlt-sys-radius-md);
 
 
   color: var(--c-accounts-cards-color);
@@ -36,14 +67,142 @@
 
   &__accounts-header {
     margin-bottom: var(--c-accounts-cards-title-margin);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__toggle-balance {
+    background: rgba(75, 42, 173, 0.08);
+    border: 1px solid rgba(75, 42, 173, 0.15);
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 20px;
+    color: var(--c-accounts-cards-color-primary);
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--c-accounts-cards-font-family);
+
+    &:hover {
+      background-color: rgba(75, 42, 173, 0.15);
+      border-color: rgba(75, 42, 173, 0.25);
+    }
+
+    i {
+      font-size: 1rem;
+    }
+  }
+
+  &__toggle-balance-text {
+    font-weight: var(--c-accounts-cards-font-weight-medium);
+  }
+
+  &__accounts-balance--hidden {
+    color: var(--c-accounts-cards-color-gray-600);
+    letter-spacing: 2px;
+  }
+
+  &__accounts-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4B2AAD 0%, #667eea 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.75rem;
+    flex-shrink: 0;
+  }
+
+  &__accounts-row-text {
+    flex: 1;
+    margin-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__accounts-row-main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__accounts-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--c-accounts-cards-color-gray-600);
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
+  }
+
+  &__accounts-iban {
+    font-size: 1.05rem;
+    color: var(--c-accounts-cards-color-gray-700);
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
+  }
+
+  &__accounts-row-balance {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  &__accounts-balance-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--c-accounts-cards-color-gray-600);
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
+  }
+
+  &__accounts-balance {
+    font-size: 1.2rem;
+    font-weight: var(--c-accounts-cards-font-weight-bold);
+    color: #2f855a;
+  }
+
+  &__accounts-balance--hidden {
+    color: var(--c-accounts-cards-color);
+    letter-spacing: 2px;
+  }
+
+  &__accounts-arrow {
+    color: var(--c-accounts-cards-color-gray-400);
+    font-size: 1rem;
+    margin-left: 8px;
+    transition: transform 0.2s ease;
+  }
+
+  &__accounts-row:hover &__accounts-arrow {
+    transform: translateX(4px);
+    color: var(--c-accounts-cards-color-primary);
   }
 
   &__accounts-title {
     margin: 0 0 var(--c-accounts-cards-title-margin) 0;
     font-size: var(--c-accounts-cards-title-size);
     font-weight: var(--c-accounts-cards-title-weight);
+    font-family: var(--c-accounts-cards-title-font-family);
     color: var(--c-accounts-cards-title-color);
     letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4B2AAD, #667eea);
+      border-radius: 2px;
+    }
   }
 
   &__accounts-table {
@@ -57,53 +216,57 @@
 
   &__accounts-row {
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: all 0.3s ease;
     background-color: var(--c-accounts-cards-row-bg);
     display: flex;
     align-items: center;
     padding: var(--c-accounts-cards-row-padding);
     border-radius: var(--c-accounts-cards-row-radius);
     box-shadow: var(--c-accounts-cards-row-shadow);
+    border: 1px solid transparent;
 
     &:hover {
       background-color: var(--c-accounts-cards-row-bg-hover);
       box-shadow: var(--c-accounts-cards-row-shadow-hover);
+      transform: translateX(4px);
+      border-color: rgba(75, 42, 173, 0.15);
     }
 
     &.selected {
-      background-color: var(--c-accounts-cards-row-bg-hover);
+      background: linear-gradient(135deg, rgba(75, 42, 173, 0.08) 0%, rgba(102, 126, 234, 0.08) 100%);
       box-shadow: var(--c-accounts-cards-row-shadow-hover);
+      border-color: rgba(75, 42, 173, 0.2);
     }
   }
 
   &__accounts-row-text {
     display: flex;
     flex-direction: column;
-    margin-left: var(--mlt-sys-spacing-5);
+    margin-left: var(--c-accounts-cards-spacing-5);
   }
 
   &__accounts-cell {
-    padding: var(--mlt-sys-spacing-4) var(--mlt-sys-spacing-5);
+    padding: var(--c-accounts-cards-spacing-4) var(--c-accounts-cards-spacing-5);
     vertical-align: middle;
   }
 
   &__accounts-cell--type {
     width: 40%;
-    font-weight: var(--mlt-sys-font-weight-semibold);
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
     color: #2d3748;
   }
 
   &__accounts-cell--number {
     width: 40%;
-    color: var(--mlt-sys-color-gray-500);
-    font-size: var(--mlt-sys-font-size-4);
+    color: var(--c-accounts-cards-color-gray-500);
+    font-size: var(--c-accounts-cards-font-size-sm);
   }
 
   &__accounts-cell--balance {
     width: 20%;
     text-align: right;
-    font-weight: var(--mlt-sys-font-weight-bold);
-    font-size: var(--mlt-sys-font-size-7);
+    font-weight: var(--c-accounts-cards-font-weight-bold);
+    font-size: var(--c-accounts-cards-font-size-md);
     color: #2f855a;
   }
 
@@ -115,8 +278,22 @@
     margin: 0 0 30px 0;
     font-size: var(--c-accounts-cards-title-size);
     font-weight: var(--c-accounts-cards-title-weight);
+    font-family: var(--c-accounts-cards-title-font-family);
     color: var(--c-accounts-cards-title-color);
     letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #4B2AAD, #667eea);
+      border-radius: 2px;
+    }
   }
 
   &__cards-container {
@@ -138,8 +315,8 @@
     
     p {
       margin: 0;
-      font-size: var(--mlt-sys-font-size-5);
-      font-weight: var(--mlt-sys-font-weight-medium);
+      font-size: var(--c-accounts-cards-font-size-5);
+      font-weight: var(--c-accounts-cards-font-weight-medium);
     }
     
     i {
@@ -152,9 +329,9 @@
     width: 100%;
     min-height: var(--c-accounts-cards-card-min-height);
     border-radius: var(--c-accounts-cards-card-radius);
-    padding: var(--c-accounts-cards-card-padding);
+    padding: 24px;
     background: linear-gradient(135deg, var(--c-accounts-cards-card-bg-start) 0%, var(--c-accounts-cards-card-bg-end) 100%);
-    color: var(--mlt-sys-color-white);
+    color: var(--c-accounts-cards-color-white);
     box-shadow: var(--c-accounts-cards-card-shadow);
     display: flex;
     flex-direction: column;
@@ -169,30 +346,94 @@
     }
   }
 
+  &__card-chip {
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    
+    i {
+      font-size: 1.25rem;
+      color: #8B6914;
+    }
+  }
+
   &__card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: var(--mlt-sys-font-size-7);
-    font-weight: var(--mlt-sys-font-weight-bold);
+    font-size: var(--c-accounts-cards-font-size-md);
+    font-weight: var(--c-accounts-cards-font-weight-bold);
     opacity: 0.95;
     margin-bottom: 10px;
   }
 
   &__card-type {
     background: rgba(255, 255, 255, 0.2);
-    padding: 4px var(--mlt-sys-spacing-3);
-    border-radius: var(--mlt-sys-radius-md);
-    font-size: var(--mlt-sys-font-size-4);
+    padding: 4px var(--c-accounts-cards-spacing-3);
+    border-radius: var(--c-accounts-cards-radius-md);
+    font-size: var(--c-accounts-cards-font-size-sm);
     backdrop-filter: blur(10px);
   }
 
   &__card-number {
-    font-size: var(--mlt-sys-font-size-7);
-    letter-spacing: 2px;
-    font-weight: var(--mlt-sys-font-weight-medium);
-    margin: 8px 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.35rem;
+    letter-spacing: 3px;
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
+    margin: 12px 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  &__card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__card-brand {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__brand-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  &__brand-circles {
+    display: flex;
+    position: relative;
+    width: 50px;
+    height: 30px;
+  }
+
+  &__brand-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+
+    &--red {
+      background-color: #eb001b;
+      left: 0;
+      opacity: 0.9;
+    }
+
+    &--yellow {
+      background-color: #f79e1b;
+      left: 18px;
+      opacity: 0.9;
+    }
   }
 
   &__card-balance {
@@ -203,8 +444,8 @@
   }
 
   &__balance-value {
-    font-size: var(--mlt-sys-font-size-10);
-    font-weight: var(--mlt-sys-font-weight-bold);
+    font-size: var(--c-accounts-cards-font-size-10);
+    font-weight: var(--c-accounts-cards-font-weight-bold);
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
@@ -212,7 +453,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    padding-top: var(--mlt-sys-spacing-3);
+    padding-top: var(--c-accounts-cards-spacing-3);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
   }
 
@@ -221,19 +462,19 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    font-size: var(--mlt-sys-font-size-3);
+    font-size: var(--c-accounts-cards-font-size-3);
   }
 
   &__label {
-    font-size: var(--mlt-sys-font-size-1);
+    font-size: var(--c-accounts-cards-font-size-1);
     opacity: 0.75;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-weight: var(--mlt-sys-font-weight-semibold);
+    font-weight: var(--c-accounts-cards-font-weight-semibold);
   }
 
   &__value {
-    font-weight: var(--mlt-sys-font-weight-bold);
-    font-size: var(--mlt-sys-font-size-4);
+    font-weight: var(--c-accounts-cards-font-weight-bold);
+    font-size: var(--c-accounts-cards-font-size-sm);
   }
 }

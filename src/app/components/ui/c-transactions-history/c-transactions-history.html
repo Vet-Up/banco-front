@@ -7,10 +7,10 @@
 		<thead class="c-transactions-history__thead">
 			<tr class="c-transactions-history__head-row">
 				<th class="c-transactions-history__th"></th>
-				<th class="c-transactions-history__th">Type</th>
+				<th class="c-transactions-history__th">Description</th>
 				<th class="c-transactions-history__th">Date</th>
 				<th class="c-transactions-history__th">Amount</th>
-				<th class="c-transactions-history__th">Description</th>
+				<th class="c-transactions-history__th">Type</th>
 			</tr>
 		</thead>
 
@@ -24,16 +24,16 @@
 						<i class="bi bi-arrow-left-circle-fill"></i>
 					}
 				</td>
-				<td class="c-transactions-history__cell c-transactions-history__cell--type">{{ transaction.transactionType }}</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--type">{{ transaction.description }}</td>
 				<td class="c-transactions-history__cell c-transactions-history__cell--date">{{ transaction.date }}</td>
 				<td class="c-transactions-history__cell c-transactions-history__cell--amount">
 					@if (transaction.transactionType == 'Credit') {
-						<span>+{{ transaction.amount }}€</span>
+						<span class="amount--positive">+{{ transaction.amount | number:'1.2-2' }}€</span>
 					} @else {
-						<span>-{{ transaction.amount }}€</span>
+						<span class="amount--negative">-{{ transaction.amount | number:'1.2-2' }}€</span>
 					}
 				</td>
-				<td class="c-transactions-history__cell c-transactions-history__cell--description">{{ transaction.description }}</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--description">{{ transaction.transactionType }}</td>
 			</tr>
 			} @empty {
 			<tr>
