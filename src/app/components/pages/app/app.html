@@ -1,1 +1,4 @@
-<router-outlet />
+@if (router.url !== '/login') {
+	<app-c-header></app-c-header>
+}
+<router-outlet/>

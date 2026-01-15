@@ -1,4 +1,8 @@
-// @forward "./_color.scss";
-// @forward "./_font-size.scss";
-// @forward "./_margin.scss";
-// @forward "./_padding.scss";
+@forward "./font-size";
+@forward "./spacing";
+@forward "./color";
+@forward "./radius";
+@forward "./font-weight";
+@forward "./font-family";
+@forward "./shadow";
+@forward "./size";
