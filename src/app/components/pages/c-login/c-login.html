@@ -1,13 +1,10 @@
 <div class="login">
   <div class="login__container">
+    <div class="login__left">
+      <img src="/img/loginImg.png" alt="Login CaixaVet" class="login__image" />
+    </div>
     <div class="login__card">
-      <h1 class="login__title">Login</h1>
-      
-      @if (error) {
-        <div class="login__error">
-          {{ error }}
-        </div>
-      }
+      <h1 class="login__title">Login CaixaVet</h1>
       
       <form class="login__form" (submit)="onSubmit($event)">
         <div class="login__field">
@@ -49,6 +46,12 @@
         <div class="login__actions">
           <button class="login__button" type="submit" [disabled]="loading">Login</button>
         </div>
+
+        @if (error) {
+          <div class="login__error">
+            {{ error }}
+          </div>
+        }
       </form>
     </div>
   </div>
