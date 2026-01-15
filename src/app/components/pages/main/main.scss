@@ -1,0 +1,14 @@
+.main {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  gap: 20px;
+  background-color: #e3e3e3;
+  padding: 20px;
+}
+
+.main__column {
+    background: #ffffff;
+    padding: 16px;
+    border-radius: 8px;
+}
+

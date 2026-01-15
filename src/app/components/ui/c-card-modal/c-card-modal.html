@@ -1,0 +1,72 @@
+@if (cardId) {
+<div class="c-card-modal__overlay" (click)="onClose()">
+  <div class="c-card-modal__content" (click)="$event.stopPropagation()">
+    <button class="c-card-modal__close" (click)="onClose()">×</button>
+    
+    @if (loading) {
+      <div class="c-card-modal__loading">Loading...</div>
+    } @else {
+      @if (card) {
+        <div class="c-card-modal__header">
+          <h2 class="c-card-modal__title">Card Details</h2>
+        </div>
+
+        <div class="c-card-modal__card-info">
+          <div class="c-card-modal__card-info-item">
+            <span class="c-card-modal__card-info-label">Card Number</span>
+            <span class="c-card-modal__card-info-value">{{card.cardNumber }}</span>
+          </div>
+          <div class="c-card-modal__card-info-item">
+            <span class="c-card-modal__card-info-label">Card Holder</span>
+            <span class="c-card-modal__card-info-value">{{ card.fullName }}</span>
+          </div>
+          <div class="c-card-modal__card-info-item">
+            <span class="c-card-modal__card-info-label">Expiration Date</span>
+            <span class="c-card-modal__card-info-value">{{ card.expirationDate }}</span>
+          </div>
+          <div class="c-card-modal__card-info-item">
+            <span class="c-card-modal__card-info-label">CVV</span>
+            <span class="c-card-modal__card-info-value">{{card.cvv}}</span>
+          </div>
+        </div>
+
+        <div class="c-card-modal__transactions-section">
+          <h3 class="c-card-modal__transactions-title">Transactions</h3>
+          
+          @if (transactions.length > 0) {
+            <div class="c-card-modal__transactions-list">
+              @for (transaction of transactions; track transaction.transactionId) {
+                <div class="c-card-modal__transaction-item">
+                  @if (transaction.transactionType == 'Credit') {
+                    <i class="bi bi-arrow-right-circle-fill c-card-modal__transaction-icon" style="color: #4B2AAD;"></i>
+                  } @else {
+                    <i class="bi bi-arrow-left-circle-fill c-card-modal__transaction-icon"></i>
+                  }
+                  <div class="c-card-modal__transaction-content">
+                    <div class="c-card-modal__transaction-main">
+                      <span class="c-card-modal__transaction-description">{{ transaction.description }}</span>
+                      <span class="c-card-modal__transaction-amount">
+                        @if (transaction.transactionType == 'Credit') {
+                          +{{ transaction.amount }}€
+                        } @else {
+                          -{{ transaction.amount }}€
+                        }
+                      </span>
+                    </div>
+                    <div class="c-card-modal__transaction-details">
+                      <span class="c-card-modal__transaction-type">{{ transaction.transactionType }}</span>
+                      <span class="c-card-modal__transaction-date">{{ transaction.date }}</span>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          } @else {
+            <p class="c-card-modal__no-transactions">No transactions found for this card</p>
+          }
+        </div>
+      }
+    }
+  </div>
+</div>
+}

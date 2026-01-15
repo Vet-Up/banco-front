@@ -1,0 +1,97 @@
+.c-transactions-history {
+  --c-transactions-history-font-family: var(--mlt-sys-font-family-primary);
+  --c-transactions-history-color: #1f2937;
+  --c-transactions-history-padding: var(--mlt-sys-spacing-6);
+  --c-transactions-history-title-size: var(--mlt-sys-font-size-11);
+  --c-transactions-history-title-weight: var(--mlt-sys-font-weight-bold);
+  --c-transactions-history-title-color: #1a202c;
+  --c-transactions-history-title-margin: var(--mlt-sys-spacing-4);
+  --c-transactions-history-table-bg: var(--mlt-sys-color-white);
+  --c-transactions-history-table-shadow: 0 1px 2px rgba(16,24,40,0.05);
+  --c-transactions-history-table-radius: var(--mlt-sys-radius-lg);
+  --c-transactions-history-thead-bg: #f9fafb;
+  --c-transactions-history-th-padding: 10px var(--mlt-sys-spacing-3);
+  --c-transactions-history-th-size: var(--mlt-sys-font-size-3);
+  --c-transactions-history-th-color: #6b7280;
+  --c-transactions-history-th-border: 1px solid #eef2f7;
+  --c-transactions-history-cell-padding: var(--mlt-sys-spacing-3);
+  --c-transactions-history-cell-size: var(--mlt-sys-font-size-4);
+  --c-transactions-history-cell-border: 1px solid #f3f4f6;
+  --c-transactions-history-icon-width: 40px;
+  --c-transactions-history-icon-size: var(--mlt-sys-font-size-7);
+  --c-transactions-history-icon-padding: var(--mlt-sys-spacing-3) var(--mlt-sys-spacing-2);
+  --c-transactions-history-amount-weight: var(--mlt-sys-font-weight-bold);
+  --c-transactions-history-date-color: #374151;
+  --c-transactions-history-no-transactions-padding: 60px var(--mlt-sys-spacing-5);
+  --c-transactions-history-no-transactions-color: var(--mlt-sys-color-gray-500);
+  --c-transactions-history-no-transactions-size: var(--mlt-sys-font-size-5);
+  --c-transactions-history-no-transactions-weight: var(--mlt-sys-font-weight-medium);
+
+  font-family: var(--c-transactions-history-font-family);
+  color: var(--c-transactions-history-color);
+  padding: var(--c-transactions-history-padding);
+
+  &__header {
+    margin-bottom: var(--mlt-sys-spacing-3);
+  }
+
+  &__title {
+    margin: 0 0 var(--c-transactions-history-title-margin) 0;
+    font-size: var(--c-transactions-history-title-size);
+    font-weight: var(--c-transactions-history-title-weight);
+    color: var(--c-transactions-history-title-color);
+    letter-spacing: -0.5px;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--c-transactions-history-table-bg);
+    box-shadow: var(--c-transactions-history-table-shadow);
+    border-radius: var(--c-transactions-history-table-radius);
+    overflow: hidden;
+  }
+
+  &__thead {
+    background: var(--c-transactions-history-thead-bg);
+  }
+
+  &__th {
+    text-align: left;
+    padding: var(--c-transactions-history-th-padding);
+    font-size: var(--c-transactions-history-th-size);
+    color: var(--c-transactions-history-th-color);
+    border-bottom: var(--c-transactions-history-th-border);
+  }
+
+  &__cell {
+    padding: var(--c-transactions-history-cell-padding);
+    font-size: var(--c-transactions-history-cell-size);
+    border-bottom: var(--c-transactions-history-cell-border);
+  }
+
+  &__cell--icon {
+    width: var(--c-transactions-history-icon-width);
+    text-align: center;
+    font-size: var(--c-transactions-history-icon-size);
+    padding: var(--c-transactions-history-icon-padding);
+  }
+
+  &__cell--amount {
+    text-align: left;
+    font-weight: var(--c-transactions-history-amount-weight);
+  }
+
+  &__cell--date {
+    white-space: nowrap;
+    color: var(--c-transactions-history-date-color);
+  }
+
+  &__no-transactions {
+    text-align: center;
+    padding: var(--c-transactions-history-no-transactions-padding);
+    color: var(--c-transactions-history-no-transactions-color);
+    font-size: var(--c-transactions-history-no-transactions-size);
+    font-weight: var(--c-transactions-history-no-transactions-weight);
+  }
+}

@@ -1,0 +1,8 @@
+<div class="main">
+    <div class="main__column">
+        <c-accounts-cards (accountSelected)="onAccountSelected($event)"></c-accounts-cards>
+    </div>
+    <div class="main__column">
+        <c-transactions-history [accountId]="selectedAccountId"></c-transactions-history>
+    </div>
+</div>

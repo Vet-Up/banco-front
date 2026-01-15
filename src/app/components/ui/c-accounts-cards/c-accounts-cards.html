@@ -1,0 +1,55 @@
+<div class="c-accounts-cards">
+<div class="c-accounts-cards__accounts-header">
+  <h2 class="c-accounts-cards__accounts-title">Your Accounts</h2>
+</div>
+<table class="c-accounts-cards__accounts-table">
+  @for (account of accounts; track account.accountId) {
+  <tr class="c-accounts-cards__accounts-row" (click)="onAccountClick(account.accountId)" [class.selected]="selectedAccountId === account.accountId" style="cursor: pointer;">
+    <i class="bi bi-safe2" style="font-size: 3rem;"></i>
+    <div class="c-accounts-cards__accounts-row-text">
+      <td class="c-accounts-cards__accounts c-accounts-cards__accounts--number">
+        <span class="c-accounts-cards__accounts-number">{{ account.iban }}</span>
+      </td>
+      <td class="c-accounts-cards__accounts c-accounts-cards__accounts--balance">
+        <span class="c-accounts-cards__accounts-balance">{{ account.balance }}€</span>
+      </td>
+    </div>
+  </tr>
+  }
+</table>
+<div class="c-accounts-cards__cards-header">
+  <h2 class="c-accounts-cards__cards-title">Cards</h2>
+</div>
+<div class="c-accounts-cards__cards-container">
+  @if (selectedAccountId) {
+    @for (card of cards; track card.creditCardId) {
+    <div class="c-accounts-cards__cards-card" (click)="onCardClick(card.creditCardId)" style="cursor: pointer;">
+      <div class="c-accounts-cards__card-number">{{ maskCardNumber(card.cardNumber) }}</div>
+
+      <div class="c-accounts-cards__card-footer">
+        <div class="c-accounts-cards__card-holder">
+          <span class="c-accounts-cards__label">Card Holder</span>
+          <span class="c-accounts-cards__value">{{ card.fullName }}</span>
+        </div>
+        <div class="c-accounts-cards__card-expiration">
+          <span class="c-accounts-cards__label">Expires</span>
+          <span class="c-accounts-cards__value">{{ card.expirationDate }}</span>
+        </div>
+      </div>
+    </div>
+    } @empty {
+      <div class="c-accounts-cards__empty-message">
+        <i class="bi bi-credit-card-2-back" style="font-size: 48px; opacity: 0.3;"></i>
+        <p>No cards found for this account</p>
+      </div>
+    }
+  } @else {
+    <div class="c-accounts-cards__empty-message">
+      <i class="bi bi-hand-index" style="font-size: 48px; opacity: 0.3;"></i>
+      <p>Select an account to view your cards</p>
+    </div>
+  }
+</div>
+</div>
+
+<c-card-modal [cardId]="selectedCardIdForModal" (close)="onCloseModal()"></c-card-modal>

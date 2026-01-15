@@ -1,0 +1,53 @@
+<section class="c-transactions-history">
+	<header class="c-transactions-history__header">
+		<h2 class="c-transactions-history__title">Transaction History</h2>
+	</header>
+
+	<table class="c-transactions-history__table">
+		<thead class="c-transactions-history__thead">
+			<tr class="c-transactions-history__head-row">
+				<th class="c-transactions-history__th"></th>
+				<th class="c-transactions-history__th">Type</th>
+				<th class="c-transactions-history__th">Date</th>
+				<th class="c-transactions-history__th">Amount</th>
+				<th class="c-transactions-history__th">Description</th>
+			</tr>
+		</thead>
+
+		<tbody class="c-transactions-history__tbody">
+			@for (transaction of transactions; track transaction.transactionId) {
+			<tr class="c-transactions-history__row">
+				<td class="c-transactions-history__cell c-transactions-history__cell--icon">
+					@if (transaction.transactionType == 'Credit') {
+						<i class="bi bi-arrow-right-circle-fill" style="color: #4B2AAD;"></i>
+					} @else {
+						<i class="bi bi-arrow-left-circle-fill"></i>
+					}
+				</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--type">{{ transaction.transactionType }}</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--date">{{ transaction.date }}</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--amount">
+					@if (transaction.transactionType == 'Credit') {
+						<span>+{{ transaction.amount }}€</span>
+					} @else {
+						<span>-{{ transaction.amount }}€</span>
+					}
+				</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--description">{{ transaction.description }}</td>
+			</tr>
+			} @empty {
+			<tr>
+				<td colspan="5" class="c-transactions-history__no-transactions">
+					@if (selectedAccountId) {
+						<i class="bi bi-inbox" style="font-size: 48px; opacity: 0.3; display: block; margin-bottom: 12px;"></i>
+						<p>No transactions found for this account</p>
+					} @else {
+						<i class="bi bi-arrow-left-circle" style="font-size: 48px; opacity: 0.3; display: block; margin-bottom: 12px;"></i>
+						<p>Select an account to view transaction history</p>
+					}
+				</td>
+			</tr>
+			}
+		</tbody>
+	</table>
+</section>

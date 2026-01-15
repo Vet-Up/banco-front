@@ -1,0 +1,261 @@
+.c-card-modal {
+  --c-card-modal-overlay-bg: rgba(0, 0, 0, 0.5);
+  --c-card-modal-overlay-z-index: 1000;
+  --c-card-modal-content-bg: var(--mlt-sys-color-white);
+  --c-card-modal-content-radius: var(--mlt-sys-radius-xl);
+  --c-card-modal-content-padding: var(--mlt-sys-spacing-6);
+  --c-card-modal-content-max-width: 600px;
+  --c-card-modal-content-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  --c-card-modal-font-family: var(--mlt-sys-font-family-primary);
+  --c-card-modal-close-size: 32px;
+  --c-card-modal-close-color: var(--mlt-sys-color-gray-500);
+  --c-card-modal-close-color-hover: #2d3748;
+  --c-card-modal-close-bg-hover: #f7fafc;
+  --c-card-modal-title-size: var(--mlt-sys-font-size-9);
+  --c-card-modal-title-weight: var(--mlt-sys-font-weight-bold);
+  --c-card-modal-title-color: #1a202c;
+  --c-card-modal-loading-padding: 40px;
+  --c-card-modal-loading-size: var(--mlt-sys-font-size-7);
+  --c-card-modal-loading-color: var(--mlt-sys-color-gray-500);
+  --c-card-modal-card-info-bg-start: #667eea;
+  --c-card-modal-card-info-bg-end: #764ba2;
+  --c-card-modal-card-info-radius: var(--mlt-sys-radius-xl);
+  --c-card-modal-card-info-padding: var(--mlt-sys-spacing-5);
+  --c-card-modal-card-info-margin: var(--mlt-sys-spacing-6);
+  --c-card-modal-card-info-item-padding: var(--mlt-sys-spacing-2) 0;
+  --c-card-modal-card-info-item-border: 1px solid rgba(255, 255, 255, 0.2);
+  --c-card-modal-card-info-label-size: var(--mlt-sys-font-size-2);
+  --c-card-modal-card-info-value-size: var(--mlt-sys-font-size-5);
+  --c-card-modal-card-info-value-weight: var(--mlt-sys-font-weight-semibold);
+  --c-card-modal-transactions-title-size: var(--mlt-sys-font-size-7);
+  --c-card-modal-transactions-title-weight: var(--mlt-sys-font-weight-bold);
+  --c-card-modal-transactions-title-color: #1a202c;
+  --c-card-modal-transactions-title-margin: var(--mlt-sys-spacing-4);
+  --c-card-modal-transactions-list-gap: var(--mlt-sys-spacing-3);
+  --c-card-modal-transaction-item-bg: #f7fafc;
+  --c-card-modal-transaction-item-bg-hover: #edf2f7;
+  --c-card-modal-transaction-item-radius: var(--mlt-sys-radius-lg);
+  --c-card-modal-transaction-item-padding: var(--mlt-sys-spacing-3) var(--mlt-sys-spacing-4);
+  --c-card-modal-transaction-item-gap: var(--mlt-sys-spacing-3);
+  --c-card-modal-transaction-icon-size: var(--mlt-sys-font-size-8);
+  --c-card-modal-transaction-icon-color: var(--mlt-sys-color-gray-500);
+  --c-card-modal-transaction-description-weight: var(--mlt-sys-font-weight-semibold);
+  --c-card-modal-transaction-description-color: #2d3748;
+  --c-card-modal-transaction-description-size: var(--mlt-sys-font-size-4);
+  --c-card-modal-transaction-amount-weight: var(--mlt-sys-font-weight-bold);
+  --c-card-modal-transaction-amount-size: var(--mlt-sys-font-size-5);
+  --c-card-modal-transaction-amount-negative: #e53e3e;
+  --c-card-modal-transaction-amount-positive: #38a169;
+  --c-card-modal-transaction-details-gap: var(--mlt-sys-spacing-3);
+  --c-card-modal-transaction-details-size: var(--mlt-sys-font-size-2);
+  --c-card-modal-transaction-details-color: var(--mlt-sys-color-gray-500);
+  --c-card-modal-transaction-type-weight: var(--mlt-sys-font-weight-semibold);
+  --c-card-modal-no-transactions-padding: var(--mlt-sys-spacing-8);
+  --c-card-modal-no-transactions-color: var(--mlt-sys-color-gray-500);
+  --c-card-modal-no-transactions-size: var(--mlt-sys-font-size-4);
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--c-card-modal-overlay-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: var(--c-card-modal-overlay-z-index);
+    animation: fadeIn 0.2s ease;
+  }
+
+  &__content {
+    background: var(--c-card-modal-content-bg);
+    border-radius: var(--c-card-modal-content-radius);
+    padding: var(--c-card-modal-content-padding);
+    max-width: var(--c-card-modal-content-max-width);
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: var(--c-card-modal-content-shadow);
+    animation: slideUp 0.3s ease;
+    font-family: var(--c-card-modal-font-family);
+  }
+
+  &__close {
+    position: absolute;
+    top: var(--mlt-sys-spacing-4);
+    right: var(--mlt-sys-spacing-4);
+    background: none;
+    border: none;
+    font-size: var(--c-card-modal-close-size);
+    cursor: pointer;
+    color: var(--c-card-modal-close-color);
+    line-height: 1;
+    padding: 0;
+    width: var(--c-card-modal-close-size);
+    height: var(--c-card-modal-close-size);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--mlt-sys-radius-full);
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: var(--c-card-modal-close-bg-hover);
+      color: var(--c-card-modal-close-color-hover);
+    }
+  }
+
+  &__header {
+    margin-bottom: var(--mlt-sys-spacing-6);
+  }
+
+  &__title {
+    font-size: var(--c-card-modal-title-size);
+    font-weight: var(--c-card-modal-title-weight);
+    color: var(--c-card-modal-title-color);
+    margin: 0;
+  }
+
+  &__loading {
+    text-align: center;
+    padding: var(--c-card-modal-loading-padding);
+    font-size: var(--c-card-modal-loading-size);
+    color: var(--c-card-modal-loading-color);
+  }
+
+  &__card-info {
+    background: linear-gradient(135deg, var(--c-card-modal-card-info-bg-start) 0%, var(--c-card-modal-card-info-bg-end) 100%);
+    border-radius: var(--c-card-modal-card-info-radius);
+    padding: var(--c-card-modal-card-info-padding);
+    color: var(--mlt-sys-color-white);
+    margin-bottom: var(--c-card-modal-card-info-margin);
+  }
+
+  &__card-info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--c-card-modal-card-info-item-padding);
+
+    &:not(:last-child) {
+      border-bottom: var(--c-card-modal-card-info-item-border);
+    }
+  }
+
+  &__card-info-label {
+    font-size: var(--c-card-modal-card-info-label-size);
+    opacity: 0.8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__card-info-value {
+    font-size: var(--c-card-modal-card-info-value-size);
+    font-weight: var(--c-card-modal-card-info-value-weight);
+  }
+
+  &__transactions-section {
+    margin-top: var(--mlt-sys-spacing-6);
+  }
+
+  &__transactions-title {
+    font-size: var(--c-card-modal-transactions-title-size);
+    font-weight: var(--c-card-modal-transactions-title-weight);
+    color: var(--c-card-modal-transactions-title-color);
+    margin: 0 0 var(--c-card-modal-transactions-title-margin) 0;
+  }
+
+  &__transactions-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--c-card-modal-transactions-list-gap);
+  }
+
+  &__transaction-item {
+    background: var(--c-card-modal-transaction-item-bg);
+    border-radius: var(--c-card-modal-transaction-item-radius);
+    padding: var(--c-card-modal-transaction-item-padding);
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--c-card-modal-transaction-item-gap);
+
+    &:hover {
+      background: var(--c-card-modal-transaction-item-bg-hover);
+    }
+  }
+
+  &__transaction-icon {
+    font-size: var(--c-card-modal-transaction-icon-size);
+    color: var(--c-card-modal-transaction-icon-color);
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  &__transaction-content {
+    flex: 1;
+  }
+
+  &__transaction-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  &__transaction-description {
+    font-weight: var(--c-card-modal-transaction-description-weight);
+    color: var(--c-card-modal-transaction-description-color);
+    font-size: var(--c-card-modal-transaction-description-size);
+  }
+
+  &__transaction-amount {
+    font-weight: var(--c-card-modal-transaction-amount-weight);
+    font-size: var(--c-card-modal-transaction-amount-size);
+
+    &--negative {
+      color: var(--c-card-modal-transaction-amount-negative);
+    }
+
+    &--positive {
+      color: var(--c-card-modal-transaction-amount-positive);
+    }
+  }
+
+  &__transaction-details {
+    display: flex;
+    gap: var(--c-card-modal-transaction-details-gap);
+    font-size: var(--c-card-modal-transaction-details-size);
+    color: var(--c-card-modal-transaction-details-color);
+  }
+
+  &__transaction-type {
+    text-transform: uppercase;
+    font-weight: var(--c-card-modal-transaction-type-weight);
+  }
+
+  &__no-transactions {
+    text-align: center;
+    padding: var(--c-card-modal-no-transactions-padding);
+    color: var(--c-card-modal-no-transactions-color);
+    font-size: var(--c-card-modal-no-transactions-size);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to { 
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

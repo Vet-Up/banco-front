@@ -28,7 +28,7 @@ export class CLogin {
           next: (user) => {
             if (user) {
               this.authService.setUser(user);
-              this.router.navigate(['/dashboard']);
+              this.router.navigate(['/main']);
             } else {
               this.error = 'Error al obtener datos del usuario';
               this.loading = false;
