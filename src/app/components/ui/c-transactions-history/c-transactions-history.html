@@ -25,7 +25,7 @@
 					}
 				</td>
 				<td class="c-transactions-history__cell c-transactions-history__cell--type">{{ transaction.description }}</td>
-				<td class="c-transactions-history__cell c-transactions-history__cell--date">{{ transaction.date }}</td>
+				<td class="c-transactions-history__cell c-transactions-history__cell--date">{{ transaction.date | date:'dd/MM/yyyy HH:mm' }}</td>
 				<td class="c-transactions-history__cell c-transactions-history__cell--amount">
 					@if (transaction.transactionType == 'Credit') {
 						<span class="amount--positive">+{{ transaction.amount | number:'1.2-2' }}€</span>
