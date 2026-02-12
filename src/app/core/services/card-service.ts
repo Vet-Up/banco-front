@@ -10,7 +10,7 @@ import { HttpService } from './http-service';
 })
 
 export class CardService {
-    private apiUrl = 'http://localhost:8080/api/credit-cards';
+    private apiUrl = 'http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/credit-cards';
     
     constructor(private http: HttpService) {}
 

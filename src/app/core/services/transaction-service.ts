@@ -8,7 +8,7 @@ import { ITransaction } from '../models/i-trasaction';
   providedIn: 'root',
 })
 export class TransactionService {
-  private apiUrl = 'http://localhost:8080/api/bank-transactions';
+  private apiUrl = 'http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/bank-transactions';
 
     constructor(private http: HttpService) {}  
 
