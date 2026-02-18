@@ -7,10 +7,10 @@ import { IAccount } from '../models/i-account';
 
 @Injectable({
   providedIn: 'root',
-  
+
 })
 export class AccountService {
-    private apiUrl = 'http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/bank-accounts';
+    private apiUrl = 'http://localhost:8080/api/bank-accounts';
     constructor(private http: HttpService) {}
 
     getAll(): Observable<IAccount[]> {

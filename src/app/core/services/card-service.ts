@@ -6,12 +6,12 @@ import { HttpService } from './http-service';
 
 @Injectable({
   providedIn: 'root',
-  
+
 })
 
 export class CardService {
-    private apiUrl = 'http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/credit-cards';
-    
+    private apiUrl = 'http://localhost:8080/api/credit-cards';
+
     constructor(private http: HttpService) {}
 
     getAll(): Observable<ICard[]> {
@@ -21,7 +21,7 @@ export class CardService {
     getById(id: string): Observable<ICard> {
     return this.http.get<ICard>(`${this.apiUrl}/${id}`);
     }
-    
+
     getByAccountId(id: string): Observable<ICard[]> {
     return this.http.get<ICard[]>(`${this.apiUrl}/by-account/${id}`);
     }

@@ -17,7 +17,7 @@ export class AuthService {
   private Observableuserv = new BehaviorSubject<IUser | null>(null);
   public user$ = this.Observableuserv.asObservable();
   private tokenVerified = false;
-  private apiUrl = 'http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/auth/login';
+  private apiUrl = 'http://localhost:8080/api/auth/login';
 
   constructor(private httpService: HttpService) {}
 
@@ -42,7 +42,7 @@ export class AuthService {
       }
     }
     this.tokenVerified = true;
-    return this.httpService.get<IUser>('http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/auth/validate').pipe(
+    return this.httpService.get<IUser>('http://localhost:8080/api/auth/validate').pipe(
       timeout(5000),
       catchError((error) => {
         this.tokenVerified = false;

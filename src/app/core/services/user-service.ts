@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private http: HttpService) {}
 
-  private apiUrl = "http://vetup-bank-back.preproducciondaw.cip.fpmislata.com/api/users";
+  private apiUrl = 'http://localhost:8080/api/users';
 
   getUserById(id: number) {
     return this.http.getById<any>(this.apiUrl, id);
@@ -23,5 +23,5 @@ export class UserService {
   getUserByDni(dni: string):Observable<IUser> {
     return this.http.get<IUser>(`${this.apiUrl}/by-dni/${dni}`);
   }
-  
+
 }
