@@ -10,7 +10,7 @@ export class UserService {
 
   constructor(private http: HttpService) {}
 
-  private apiUrl = 'http://localhost:8080/api/users';
+  private apiUrl = '/api/users';
 
   getUserById(id: number) {
     return this.http.getById<any>(this.apiUrl, id);

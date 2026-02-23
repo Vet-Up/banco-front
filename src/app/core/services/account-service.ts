@@ -10,7 +10,7 @@ import { IAccount } from '../models/i-account';
 
 })
 export class AccountService {
-    private apiUrl = 'http://localhost:8080/api/bank-accounts';
+    private apiUrl = '/api/bank-accounts';
     constructor(private http: HttpService) {}
 
     getAll(): Observable<IAccount[]> {

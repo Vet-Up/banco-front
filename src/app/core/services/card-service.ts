@@ -10,7 +10,7 @@ import { HttpService } from './http-service';
 })
 
 export class CardService {
-    private apiUrl = 'http://localhost:8080/api/credit-cards';
+    private apiUrl = '/api/credit-cards';
 
     constructor(private http: HttpService) {}
 
