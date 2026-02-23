@@ -17,7 +17,7 @@ export class AuthService {
   private Observableuserv = new BehaviorSubject<IUser | null>(null);
   public user$ = this.Observableuserv.asObservable();
   private tokenVerified = false;
-  private apiUrl = 'http://localhost:8080/api/auth/login';
+  private apiUrl = '/api/auth/login';
 
   constructor(private httpService: HttpService) {}
 
